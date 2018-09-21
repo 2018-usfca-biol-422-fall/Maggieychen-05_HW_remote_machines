@@ -14,3 +14,8 @@
 echo "Output from preliminary quality control checks on selected fasta files"
 date
 
+# Indicate what will be included in the summary of fasta file
+echo "Output for each fasta includes:
+Filename, file size, first three lines, last three lines,
+the number of sequences in the file, and the
+sequence identifier lines sorted alphabetically."
