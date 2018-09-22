@@ -19,3 +19,13 @@ echo "Output for each fasta includes:
 Filename, file size, first three lines, last three lines,
 the number of sequences in the file, and the
 sequence identifier lines sorted alphabetically."
+
+# Provide a seperation line and information about each fasta file
+for filename in "$@"
+do
+	echo ######################################
+	FILENAME=$filename	
+	echo output for "$FILENAME"
+done
+
+
