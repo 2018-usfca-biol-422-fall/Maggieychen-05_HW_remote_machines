@@ -40,6 +40,9 @@ do
 	echo ###########
 	COUNT=$(grep ">" $filename | wc -l)
 	echo Number of sequence:"$COUNT"
+	echo ##########
+	echo "Sequence names (sorted):"
+	grep ">" $filename | cut -f 2-3 -d " " | sort
 done
 
 
