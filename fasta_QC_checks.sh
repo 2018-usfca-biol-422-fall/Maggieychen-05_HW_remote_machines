@@ -11,12 +11,12 @@
 # please unzip them, thus they are in the form of .fasta
 
 # This will indicate the output is a log file, and  include the date
-echo "Output from preliminary quality control
- checks on selected fasta files" > 2018-09-23_fasta_QC_log.txt
-date >> 2018-09-23_fasta_QC_log.txt
+echo "Output from preliminary quality control"
+echo "checks on selected fasta files"
+date
 
 # Indicate what will be included in the summary of fasta file
-echo  >>2018-09-23_fasta_QC_log.txt
+echo " "
 echo "Output for each fasta includes:
 Filename, file size, first three lines, last three lines,
 the number of sequences in the file, and the
@@ -31,9 +31,9 @@ do
 	echo ##########
 	FILENAME=$filename
 	echo output for "$FILENAME"
-	SIZE=$(du -k $filename |cut -f 1)
+	SIZE=$(du -h $filename | cut -f 1)
 	echo ###########
-	echo size:"$SIZE"k
+	echo size:"$SIZE"
 	echo ###########
 	echo First three lines:
 	echo -----------------------
@@ -41,13 +41,13 @@ do
 	echo ###########
 	echo Last three lines:
 	echo ----------------------
-	awk NF $filename | tail -3
+	tail -3 $filename
 	echo ###########
 	COUNT=$(grep ">" $filename | wc -l)
 	echo Number of sequence:"$COUNT"
 	echo ##########
 	echo "Sequence names (sorted):"
-	grep ">" $filename | cut -f 2-3 -d " " | sort
-done >> 2018-09-23_fasta_QC_log.txt
+	grep ">" $filename | sort
+done
 
 
