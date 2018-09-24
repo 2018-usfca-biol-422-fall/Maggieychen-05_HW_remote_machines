@@ -24,10 +24,19 @@ sequence identifier lines sorted alphabetically."
 for filename in "$@"
 do
 	echo ######################################
-	FILENAME=$filename	
+	FILENAME=$filename
 	echo output for "$FILENAME"
 	SIZE=$(du -k $filename |cut -f 1)
+	echo ###########
 	echo size:"$SIZE"k
+	echo ###########
+	echo First three lines:
+	echo -----------------------
+	head -n 3 $filename
+	echo ###########
+	echo Last three lines:
+	echo ----------------------
+	awk NF $filename | tail -3
 done
 
 
