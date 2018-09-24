@@ -26,6 +26,9 @@ do
 	echo ######################################
 	FILENAME=$filename	
 	echo output for "$FILENAME"
+	SIZE=$(du -k $filename |cut -f 1)
+	echo size:"$SIZE"k
 done
+
 
 
