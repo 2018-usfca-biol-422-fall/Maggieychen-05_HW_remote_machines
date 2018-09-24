@@ -37,6 +37,9 @@ do
 	echo Last three lines:
 	echo ----------------------
 	awk NF $filename | tail -3
+	echo ###########
+	COUNT=$(grep ">" $filename | wc -l)
+	echo Number of sequence:"$COUNT"
 done
 
 
