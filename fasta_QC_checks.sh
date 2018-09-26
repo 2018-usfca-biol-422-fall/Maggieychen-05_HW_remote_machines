@@ -17,37 +17,37 @@ date
 
 # Indicate what will be included in the summary of fasta file
 echo " "
-echo "Output for each fasta includes:
-Filename, file size, first three lines, last three lines,
-the number of sequences in the file, and the
-sequence identifier lines sorted alphabetically." >> 2018-09-23_fasta_QC_log.txt
+echo "Output for each fasta includes:"
+echo "Filename, file size, first three lines, last three lines,"
+echo "the number of sequences in the file, and the"
+echo "sequence identifier lines sorted alphabetically."
 
 
 # Provide a seperation line and information about each fasta file
 for filename in "$@"
 do
-	echo ##########
+	echo " "
 	echo "######################################"
-	echo ##########
-	FILENAME=$filename
+	echo " "
+	FILENAME="$filename"
 	echo output for "$FILENAME"
-	SIZE=$(du -h $filename | cut -f 1)
-	echo ###########
+	SIZE=$(du -h "$filename" | cut -f 1)
+	echo " "
 	echo size:"$SIZE"
-	echo ###########
+	echo " "
 	echo First three lines:
 	echo -----------------------
-	head -n 3 $filename
-	echo ###########
+	head -n 3 "$filename"
+	echo " "
 	echo Last three lines:
 	echo ----------------------
-	tail -3 $filename
-	echo ###########
-	COUNT=$(grep ">" $filename | wc -l)
+	tail -3 "$filename"
+	echo " "
+	COUNT=$(grep -c ">" "$filename")
 	echo Number of sequence:"$COUNT"
-	echo ##########
+	echo " "
 	echo "Sequence names (sorted):"
-	grep ">" $filename | sort
+	grep ">" "$filename" | sort
 done
 
 
