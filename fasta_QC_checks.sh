@@ -29,25 +29,29 @@ do
 	echo " "
 	echo "######################################"
 	echo " "
-	FILENAME="$filename"
-	echo output for "$FILENAME"
-	SIZE=$(du -h "$filename" | cut -f 1)
+	echo "$filename"
+    SIZE=$(du -h "$filename" | cut -f 1)
+    # -h Provide the size of the file in human read-able form
 	echo " "
 	echo size:"$SIZE"
 	echo " "
 	echo First three lines:
 	echo -----------------------
 	head -n 3 "$filename"
+    # Extract the first three lines of the file
 	echo " "
 	echo Last three lines:
 	echo ----------------------
 	tail -3 "$filename"
+    # Extrac the last three lines of the file
 	echo " "
 	COUNT=$(grep -c ">" "$filename")
+    # Recognize ">" as the start of the species name and count the number of it
 	echo Number of sequence:"$COUNT"
 	echo " "
 	echo "Sequence names (sorted):"
 	grep ">" "$filename" | sort
+    # List the Sequence names in the alphabetical order using "sort"
 done
 
 
